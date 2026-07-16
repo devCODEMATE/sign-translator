@@ -6,6 +6,10 @@ const translations = {
     statusWaiting: "Waiting for camera permission...",
     statusActive: "Camera active",
     statusError: "Could not access the camera. Check your browser permissions.",
+    modelWaiting: "Loading hand detection model...",
+    modelReady: "Model ready! Show your hand to the camera.",
+    modelDetecting: "Hand detected!",
+    modelNoHand: "No hand detected",
   },
   es: {
     title: "CodeMate Sign Translator",
@@ -13,11 +17,13 @@ const translations = {
     statusWaiting: "Esperando permiso de cámara...",
     statusActive: "Cámara activa",
     statusError: "No se pudo acceder a la cámara. Revisá los permisos del navegador.",
+    modelWaiting: "Cargando el modelo de detección de manos...",
+    modelReady: "¡Modelo listo! Mostrale tu mano a la cámara.",
+    modelDetecting: "¡Mano detectada!",
+    modelNoHand: "No se detecta ninguna mano",
   },
 };
 
-// currentLang is global on purpose, so webcam.js (and future scripts)
-// can read it without needing modules/imports.
 let currentLang = localStorage.getItem("lang") || "en";
 
 function applyTranslations() {
