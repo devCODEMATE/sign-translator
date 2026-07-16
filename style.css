@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #073b4c;
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  position: relative;
+}
+
+.lang-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #5a527a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lang-toggle:hover {
+  background-color: #6b9e93;
+}
+
+h1 {
+  color: #ffd166;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b9e93;
+  margin-bottom: 24px;
+}
+
+.camera-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #000000;
+  border: 3px solid #5a527a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.status {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #ffffff;
+}

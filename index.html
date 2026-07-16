@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeMate Sign Translator</title>
+  <link rel="stylesheet" href="css/style.css?v=1" />
+</head>
+<body>
+  <main class="app">
+    <button id="lang-toggle" class="lang-toggle" type="button">ES</button>
+
+    <h1 data-i18n="title">CodeMate Sign Translator</h1>
+    <p class="subtitle" data-i18n="subtitle">Step 1: turning on the webcam</p>
+
+    <div class="camera-wrapper">
+      <video id="webcam" autoplay playsinline muted></video>
+    </div>
+
+    <p id="status" class="status" data-i18n="statusWaiting">Waiting for camera permission...</p>
+  </main>
+
+  <script src="js/i18n.js?v=1"></script>
+  <script src="js/webcam.js?v=1"></script>
+</body>
+</html>
