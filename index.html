@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeMate Sign Translator</title>
-  <link rel="stylesheet" href="css/style.css?v=1" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 <body>
   <main class="app">
@@ -15,18 +15,59 @@
 
     <div class="camera-wrapper">
       <video id="webcam" autoplay playsinline muted></video>
+      <canvas id="hand-canvas"></canvas>
     </div>
 
     <p id="status" class="status" data-i18n="statusWaiting">Waiting for camera permission...</p>
     <p id="model-status" class="status" data-i18n="modelWaiting">Loading hand detection model...</p>
+
+    <section class="training-panel">
+      <div class="mode-toggle">
+        <button id="mode-letter" type="button" class="mode-btn selected" data-i18n="modeLetter">Letter</button>
+        <button id="mode-word" type="button" class="mode-btn" data-i18n="modeWord">Word</button>
+      </div>
+
+      <div id="letter-mode-section">
+        <h2 data-i18n="selectSignLanguage">Choose the sign language</h2>
+        <div class="sign-language-buttons">
+          <button id="sign-lsa" type="button" class="sign-btn">LSA</button>
+          <button id="sign-asl" type="button" class="sign-btn">ASL</button>
+        </div>
+
+        <h2 data-i18n="trainingSelectLetter">Select the letter you are recording</h2>
+        <div id="letter-buttons" class="letter-buttons"></div>
+
+        <button id="capture-btn" type="button" class="capture-btn" data-i18n="captureButton">
+          Capture sample
+        </button>
+
+        <div id="sample-counts" class="sample-counts"></div>
+      </div>
+
+      <div id="word-mode-section" class="hidden">
+        <h2 data-i18n="selectWord">Select the word you are recording</h2>
+        <div id="word-buttons" class="word-buttons"></div>
+
+        <button id="record-word-btn" type="button" class="capture-btn" data-i18n="recordWordButton">
+          Record sign
+        </button>
+
+        <p id="record-status" class="status"></p>
+
+        <div id="word-sample-counts" class="sample-counts"></div>
+      </div>
+    </section>
   </main>
 
-  <!-- TensorFlow.js core + the pre-trained handpose model, loaded from CDN -->
+  <!-- TensorFlow.js core + the pre-trained handpose and blazeface models, loaded from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.1.0/dist/handpose.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface@0.0.7"></script>
 
-  <script src="js/i18n.js?v=1"></script>
-  <script src="js/webcam.js?v=1"></script>
-  <script src="js/hand-detection.js?v=1"></script>
+  <script src="js/i18n.js?v=5"></script>
+  <script src="js/webcam.js?v=5"></script>
+  <script src="js/hand-skeleton.js?v=5"></script>
+  <script src="js/hand-detection.js?v=5"></script>
+  <script src="js/sample-recorder.js?v=5"></script>
 </body>
 </html>

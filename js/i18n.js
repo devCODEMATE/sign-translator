@@ -1,4 +1,3 @@
-// Translation dictionary. Add new keys here as the app grows.
 const translations = {
   en: {
     title: "CodeMate Sign Translator",
@@ -10,9 +9,20 @@ const translations = {
     modelReady: "Model ready! Show your hand to the camera.",
     modelDetecting: "Hand detected!",
     modelNoHand: "No hand detected",
+    selectSignLanguage: "Choose the sign language",
+    trainingSelectLetter: "Select the letter you are recording",
+    captureButton: "Capture sample",
+    samplesWord: "samples",
+    modeLetter: "Letter",
+    modeWord: "Word",
+    selectWord: "Select the word you are recording",
+    recordWordButton: "Record sign",
+    recording: "Recording...",
+    recordTooShort: "Too short - make sure your hand AND face are visible, then try again",
+    recordSaved: "Saved!",
   },
   es: {
-    title: "CodeMate Sign Translator",
+    title: "Traductor de Señas CodeMate",
     subtitle: "Paso 1: prender la webcam",
     statusWaiting: "Esperando permiso de cámara...",
     statusActive: "Cámara activa",
@@ -21,6 +31,17 @@ const translations = {
     modelReady: "¡Modelo listo! Mostrale tu mano a la cámara.",
     modelDetecting: "¡Mano detectada!",
     modelNoHand: "No se detecta ninguna mano",
+    selectSignLanguage: "Elegí la lengua de señas",
+    trainingSelectLetter: "Elegí la letra que estás grabando",
+    captureButton: "Capturar muestra",
+    samplesWord: "muestras",
+    modeLetter: "Letra",
+    modeWord: "Palabra",
+    selectWord: "Elegí la palabra que estás grabando",
+    recordWordButton: "Grabar seña",
+    recording: "Grabando...",
+    recordTooShort: "Muy corta - asegurate de que se vean tu mano Y tu cara, y probá de nuevo",
+    recordSaved: "¡Guardado!",
   },
 };
 
