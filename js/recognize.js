@@ -12,23 +12,29 @@ let loadedWordMeans = null;
 let loadedWordStds = null;
 
 async function loadModelsForRecognition() {
+  // Load from static files in /models, committed to the repo - this
+  // works on any device visiting the site, unlike IndexedDB (which is
+  // local to whichever browser ran the training).
   try {
-    loadedLetterModel = await tf.loadLayersModel(LETTER_MODEL_STORAGE_KEY);
-    loadedLetterClasses = JSON.parse(localStorage.getItem("sign-translator-letter-classes"));
+    loadedLetterModel = await tf.loadLayersModel("models/letter-model.json");
+    const lettersResponse = await fetch("models/letter-classes.json");
+    loadedLetterClasses = await lettersResponse.json();
     console.log("Modelo de letras cargado para reconocimiento.");
   } catch (error) {
-    console.warn("No se pudo cargar el modelo de letras - entrenalo primero.", error);
+    console.warn("No se pudo cargar el modelo de letras.", error);
   }
 
   try {
-    loadedWordModel = await tf.loadLayersModel(WORD_MODEL_STORAGE_KEY);
-    loadedWordClasses = JSON.parse(localStorage.getItem("sign-translator-word-classes"));
-    const stats = JSON.parse(localStorage.getItem("sign-translator-word-feature-stats"));
+    loadedWordModel = await tf.loadLayersModel("models/word-model.json");
+    const wordsResponse = await fetch("models/word-classes.json");
+    loadedWordClasses = await wordsResponse.json();
+    const statsResponse = await fetch("models/word-feature-stats.json");
+    const stats = await statsResponse.json();
     loadedWordMeans = stats.means;
     loadedWordStds = stats.stds;
     console.log("Modelo de palabras cargado para reconocimiento.");
   } catch (error) {
-    console.warn("No se pudo cargar el modelo de palabras - entrenalo primero.", error);
+    console.warn("No se pudo cargar el modelo de palabras.", error);
   }
 }
 

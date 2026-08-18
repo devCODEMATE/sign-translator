@@ -87,6 +87,16 @@
         <p id="recognize-word-result" class="status"></p>
       </div>
     </section>
+        <section class="model-training-panel">
+      <h2>Exportar modelos entrenados</h2>
+      <button id="export-letters-btn" type="button" class="capture-btn">
+        Descargar modelo de letras
+      </button>
+      <button id="export-words-btn" type="button" class="capture-btn">
+        Descargar modelo de palabras
+      </button>
+      <p id="export-status" class="status"></p>
+    </section>
   </main>
 
   <!-- TensorFlow.js core + the pre-trained handpose and blazeface models, loaded from CDN -->
@@ -100,6 +110,7 @@
   <script src="js/hand-detection.js?v=5"></script>
   <script src="js/sample-recorder.js?v=5"></script>
   <script src="js/train.js?v=2"></script>
+  <script src="js/export-model.js?v=1"></script>
   <script src="js/recognize.js?v=1"></script>
 </body>
 </html>
