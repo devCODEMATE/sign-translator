@@ -76,12 +76,14 @@ function watchForWordResult() {
 }
 
 const recognizeWordBtn = document.getElementById("translator-recognize-btn");
-
 recognizeWordBtn.addEventListener("click", () => {
   recognizeWordBtn.disabled = true;
   listeningStatusEl.textContent = "";
-  hiddenWordButton.click();
+  recognizeWord(); // Call directly instead of simulating a click on the
+                    // hidden button - click() on display:none elements
+                    // can be unreliable on mobile Safari.
 });
+
 // After a word is recognized, wait until the hand actually leaves the
 // frame (or stays still doing nothing new) before starting the next
 // capture - otherwise the tail end of the same gesture gets captured
