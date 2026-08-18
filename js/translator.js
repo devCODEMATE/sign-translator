@@ -77,6 +77,13 @@ function watchForWordResult() {
 recognizeWordBtn.addEventListener("click", async () => {
   if (recognizeWordBtn.disabled) return;
 
+  // "Unlock" speech synthesis on iOS Safari: it requires speak() to be
+  // called synchronously within a direct user interaction at least
+  // once per session before it will play audio triggered from async
+  // code later (like our MutationObserver does).
+  const unlockUtterance = new SpeechSynthesisUtterance("");
+  window.speechSynthesis.speak(unlockUtterance);
+
   recognizeWordBtn.disabled = true;
   listeningStatusEl.textContent = "";
 
