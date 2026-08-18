@@ -63,9 +63,8 @@ function watchForWordResult() {
     if (phraseWords.length > MAX_PHRASE_WORDS) phraseWords.shift();
     translatorPhraseEl.textContent = phraseWords.join(", ");
 
-    speakText(word);
+     speakText(word);
     listeningStatusEl.textContent = "";
-    recognizeWordBtn.disabled = false;
   });
 
   observer.observe(hiddenWordResult, {
@@ -74,15 +73,23 @@ function watchForWordResult() {
     subtree: true,
   });
 }
-
 const recognizeWordBtn = document.getElementById("translator-recognize-btn");
-recognizeWordBtn.addEventListener("click", () => {
+recognizeWordBtn.addEventListener("click", async () => {
+  if (recognizeWordBtn.disabled) return;
+
   recognizeWordBtn.disabled = true;
   listeningStatusEl.textContent = "";
-  recognizeWord(); // Call directly instead of simulating a click on the
-                    // hidden button - click() on display:none elements
-                    // can be unreliable on mobile Safari.
+
+  try {
+    await recognizeWord();
+  } catch (error) {
+    console.error("Error al traducir la seña:", error);
+    listeningStatusEl.textContent = "Ocurrió un error - probá de nuevo";
+  } finally {
+    recognizeWordBtn.disabled = false;
+  }
 });
+
 
 // After a word is recognized, wait until the hand actually leaves the
 // frame (or stays still doing nothing new) before starting the next
