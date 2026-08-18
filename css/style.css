@@ -333,3 +333,55 @@ h1 {
 .recognize-block {
   margin-bottom: 20px;
 }
+
+.secondary-btn {
+  background-color: #5a527a;
+  color: #ffffff;
+}
+
+.translator-output {
+  margin: 28px 0;
+  padding: 24px;
+  background-color: #0a4a5e;
+  border: 2px solid #5a527a;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.output-label {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6b9e93;
+  margin-bottom: 6px;
+}
+
+.phrase-label {
+  margin-top: 20px;
+}
+
+.translator-word {
+  font-size: 56px;
+  font-weight: 800;
+  color: #ffd166;
+  line-height: 1.1;
+  min-height: 64px;
+}
+
+.translator-phrase {
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #073b4c;
+  border-radius: 8px;
+  padding: 10px 16px;
+  min-height: 28px;
+}
+
+.listening-status {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffd166;
+  min-height: 20px;
+}

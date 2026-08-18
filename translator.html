@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traductor de Señas CodeMate</title>
+  <link rel="stylesheet" href="css/style.css?v=5" />
+</head>
+<body>
+  <main class="app">
+    <h1>Traductor de Señas CodeMate</h1>
+    <p class="subtitle">Mostrale una seña a la cámara</p>
+
+    <div class="camera-wrapper">
+      <video id="webcam" autoplay playsinline muted></video>
+      <canvas id="hand-canvas"></canvas>
+    </div>
+
+    <p id="status" class="status"></p>
+    <p id="model-status" class="status"></p>
+        <p id="translator-listening-status" class="listening-status"></p>
+
+     <div class="translator-output">
+      <p class="output-label">Última seña reconocida</p>
+      <div id="translator-output" class="translator-word">—</div>
+
+      <p class="output-label phrase-label">Frase completa</p>
+      <div id="translator-phrase" class="translator-phrase">—</div>
+    </div>
+
+    <button id="translator-recognize-btn" type="button" class="capture-btn">
+      Traducir seña
+    </button>
+        <button id="translator-reset" type="button" class="capture-btn secondary-btn">
+      Borrar y empezar de nuevo
+    </button>
+
+    <!-- Hidden training UI: not shown to the user, but the existing
+         scripts (sample-recorder.js, train.js, recognize.js) look for
+         these elements by ID and need them to exist to avoid errors.
+         translator.js drives recognize-word-btn programmatically. -->
+    <div class="hidden">
+      <button id="lang-toggle" type="button">ES</button>
+
+      <div class="mode-toggle">
+        <button id="mode-letter" type="button" class="mode-btn selected"></button>
+        <button id="mode-word" type="button" class="mode-btn"></button>
+      </div>
+      <div id="letter-mode-section">
+        <div class="sign-language-buttons">
+          <button id="sign-lsa" type="button"></button>
+          <button id="sign-asl" type="button"></button>
+        </div>
+        <div id="letter-buttons"></div>
+        <button id="capture-btn" type="button"></button>
+        <div id="sample-counts"></div>
+      </div>
+      <div id="word-mode-section">
+        <div id="word-buttons"></div>
+        <button id="record-word-btn" type="button"></button>
+        <p id="record-status"></p>
+        <div id="word-sample-counts"></div>
+      </div>
+
+      <button id="train-letters-btn" type="button"></button>
+      <div id="letters-training-log"></div>
+      <button id="train-words-btn" type="button"></button>
+      <div id="words-training-log"></div>
+
+      <button id="recognize-letter-btn" type="button"></button>
+      <p id="recognize-letter-result"></p>
+      <button id="recognize-word-btn" type="button"></button>
+      <p id="recognize-word-result"></p>
+    </div>
+  </main>
+
+  <!-- Same models and scripts as index.html, same order - translator.js
+       goes last, since it drives the already-loaded recognition logic. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.1.0/dist/handpose.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface@0.0.7"></script>
+
+  <script src="js/i18n.js?v=5"></script>
+  <script src="js/webcam.js?v=5"></script>
+  <script src="js/hand-skeleton.js?v=5"></script>
+  <script src="js/hand-detection.js?v=5"></script>
+  <script src="js/sample-recorder.js?v=5"></script>
+  <script src="js/train.js?v=2"></script>
+  <script src="js/recognize.js?v=1"></script>
+  <script src="js/translator.js?v=1"></script>
+</body>
+</html>
