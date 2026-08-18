@@ -57,6 +57,19 @@
         <div id="word-sample-counts" class="sample-counts"></div>
       </div>
     </section>
+     <section class="model-training-panel">
+      <h2>Entrenar modelo de letras</h2>
+      <button id="train-letters-btn" type="button" class="capture-btn">
+        Entrenar letras
+      </button>
+      <div id="letters-training-log" class="training-log"></div>
+
+      <h2>Entrenar modelo de palabras</h2>
+      <button id="train-words-btn" type="button" class="capture-btn">
+        Entrenar palabras
+      </button>
+      <div id="words-training-log" class="training-log"></div>
+    </section>
   </main>
 
   <!-- TensorFlow.js core + the pre-trained handpose and blazeface models, loaded from CDN -->
@@ -69,5 +82,6 @@
   <script src="js/hand-skeleton.js?v=5"></script>
   <script src="js/hand-detection.js?v=5"></script>
   <script src="js/sample-recorder.js?v=5"></script>
+  <script src="js/train.js?v=2"></script>
 </body>
 </html>
