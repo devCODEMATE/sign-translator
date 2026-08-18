@@ -70,6 +70,23 @@
       </button>
       <div id="words-training-log" class="training-log"></div>
     </section>
+       <section class="recognition-panel">
+      <h2>Probar reconocimiento en vivo</h2>
+
+      <div class="recognize-block">
+        <button id="recognize-letter-btn" type="button" class="capture-btn">
+          Reconocer letra
+        </button>
+        <p id="recognize-letter-result" class="status"></p>
+      </div>
+
+      <div class="recognize-block">
+        <button id="recognize-word-btn" type="button" class="capture-btn">
+          Reconocer palabra
+        </button>
+        <p id="recognize-word-result" class="status"></p>
+      </div>
+    </section>
   </main>
 
   <!-- TensorFlow.js core + the pre-trained handpose and blazeface models, loaded from CDN -->
@@ -83,5 +100,6 @@
   <script src="js/hand-detection.js?v=5"></script>
   <script src="js/sample-recorder.js?v=5"></script>
   <script src="js/train.js?v=2"></script>
+  <script src="js/recognize.js?v=1"></script>
 </body>
 </html>

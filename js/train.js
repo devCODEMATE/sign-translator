@@ -110,6 +110,8 @@ async function trainLetterModel() {
 
   const evalResult = model.evaluate(testXsTensor, testYsTensor);
   const testAccuracy = (await evalResult[1].data())[0];
+    evalResult[0].dispose();
+  evalResult[1].dispose();
 
   // Per-letter breakdown - which letters does it get right vs confuse?
   const predictions = model.predict(testXsTensor);
@@ -182,8 +184,16 @@ async function trainLetterModel() {
   await model.save(LETTER_MODEL_STORAGE_KEY);
   window.letterModel = model;
   window.letterClasses = letters;
+    localStorage.setItem("sign-translator-letter-classes", JSON.stringify(letters));
 
   console.log("Modelo de letras entrenado y guardado.", { testAccuracy, breakdown, letters });
+await loadModelsForRecognition();
+
+  trainXsTensor.dispose();
+  trainYsTensor.dispose();
+  testXsTensor.dispose();
+  testYsTensor.dispose();
+  predictions.dispose();
 
   trainButton.disabled = false;
 }
@@ -280,6 +290,7 @@ async function trainWordModel() {
   // standardized data needs standardized input to work correctly.
   window.wordFeatureMeans = means;
   window.wordFeatureStds = stds;
+    localStorage.setItem("sign-translator-word-feature-stats", JSON.stringify({ means, stds }));
 
   const trainXsTensor = tf.tensor2d(trainXs);
   const trainYsTensor = tf.oneHot(tf.tensor1d(trainYs, "int32"), words.length);
@@ -314,6 +325,8 @@ async function trainWordModel() {
 
   const evalResult = model.evaluate(testXsTensor, testYsTensor);
   const testAccuracy = (await evalResult[1].data())[0];
+  evalResult[0].dispose();
+  evalResult[1].dispose();
 
   const predictions = model.predict(testXsTensor);
   const predictedLabels = await predictions.argMax(-1).array();
@@ -382,8 +395,15 @@ async function trainWordModel() {
   await model.save(WORD_MODEL_STORAGE_KEY);
   window.wordModel = model;
   window.wordClasses = words;
-
+  localStorage.setItem("sign-translator-word-classes", JSON.stringify(words));
   console.log("Modelo de palabras entrenado y guardado.", { testAccuracy, breakdown, words });
+  await loadModelsForRecognition();
+
+  trainXsTensor.dispose();
+  trainYsTensor.dispose();
+  testXsTensor.dispose();
+  testYsTensor.dispose();
+  predictions.dispose();
 
   trainButton.disabled = false;
 }
