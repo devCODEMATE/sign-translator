@@ -145,14 +145,13 @@ const wordList = [
   { id: "chau", label: "Chau" },
   { id: "porFavor", label: "Por favor" },
   { id: "permiso", label: "Permiso" },
-  { id: "buenosDias", label: "Buenos días" },
   { id: "gracias", label: "Gracias" },
 ];
 
 let selectedWord = wordList[0].id;
 
 const WORD_STORAGE_KEY = "sign-translator-word-samples";
-const RECORD_DURATION_MS = 1200;
+const RECORD_DURATION_MS = 2000;
 const SEQUENCE_LENGTH = 30;
 const MIN_VALID_FRAMES = 10;
 
